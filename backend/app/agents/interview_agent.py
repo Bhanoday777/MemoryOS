@@ -51,12 +51,12 @@ class InterviewAgent:
             conversation_history=history_str
         )
 
-        # 4. Formulate the human query instruction
         if not last_user_message:
             # First turn: start interview with warm greeting and opening role question
             human_query = (
-                f"Please initiate the exit interview with a warm greeting and an opening question "
-                f"tailored to the employee's role as a {employee_role}."
+                f"Please initiate the exit interview with a warm greeting for the employee, "
+                f"present the 3 known outstanding gaps and security warnings from the system prompt context, "
+                f"and ask them to recommend remediation changes or procedures to resolve these."
             )
             temperature = 0.5  # Slightly higher temperature for warm, creative greeting
         else:

@@ -79,7 +79,7 @@ export default function KnowledgeCapture({
 
       const data = await res.json();
       setSessionId(data.session_id);
-      setMessages([{ role: 'assistant', content: data.greeting }]);
+      setMessages([{ role: 'assistant', content: data.message }]);
     } catch (err) {
       alert('Error initializing session: ' + err);
     } finally {
