@@ -1,100 +1,339 @@
-🧠 MemoryOS — Autonomous Organizational Memory Safeguard
-Tagline/Intro: MemoryOS is a premium, multi-agent AI system designed to capture, validate, and secure corporate knowledge from departing employees. Instead of losing critical tribal knowledge to empty handovers, organizations can conduct dynamic AI exit interviews, audit procedures against safety policies using Enkrypt AI, and index facts in Qdrant Vector database for secure citation-backed RAG QA. Built for the Google AI Hackathon 2026.
-Key Features:
-💬 Dynamic Agentic Exit Interviews: A role-aware AI interviewer (Gemini 1.5) that probes the departing employee for undocumented system configurations, credentials, and setups.
-🛡️ Enkrypt AI Prompt Security Gateway: An active governance firewall that intercepts PII leaks, secret credentials, and malicious injection attacks before they reach external LLMs.
-⚠️ Compliance & Validation Audit Engine: A validation agent that scans knowledge for vulnerabilities (e.g. plaintext database passwords written on post-it notes) and flags security conflicts.
-📄 Notion-Style SOP Generator: Automatically compiles extracted knowledge units and reference documents into highly structured markdown operating procedures and runbooks.
-🔎 Qdrant Semantic RAG QA Console: A ChatGPT-style question-and-answer interface using Vertex AI embeddings and Qdrant DB, returning answers with clickable citation source badges.
-✨ Sleek Glassmorphic 3D Telemetry: Dark-mode first operations console featuring interactive coordinate particle grids (DotField) and neon GL-filament animations (WebThreads).
-Architecture & Tech Stack:
-Frontend: Next.js 16 (React, TypeScript, TailwindCSS, Framer Motion, HTML5 Canvas)
-Backend: Python 3.12 (FastAPI, Uvicorn, SQLAlchemy, LangGraph)
-AI Integration: Google GenAI SDK (gemini-1.5-flash and Vertex AI text-embedding-004)
-Database & Security: Qdrant Vector DB & Enkrypt AI Guardrails Gateway
-Quick Start Guide:
-Backend Setup: cd backend .\.venv\Scripts\activate (or source on linux) pip install -r requirements.txt GEMINI_API_KEY=your_key_here uvicorn app.main:app --reload --port 8000
-Frontend Setup: cd frontend npm install npm run dev Open http://localhost:3001 in your browser.
-Project Structure:
-backend/app/main.py: Primary REST API endpoints.
-backend/app/agents/interview_agent.py: Conducts the dynamic, stage-gated chat turns.
-backend/app/prompts/interview_prompt.md: System prompt mapping known gaps and security policies.
-backend/app/services/rag.py: Manages Qdrant DB vector storage, dimension adaptors, and RAG retrieval.
-frontend/src/app/dashboard/page.tsx: The primary three-column operations dashboard.
-frontend/src/components/DotField.tsx: Bulging particle vector space matrix background.
-This is exactly what the user wants! I will output this single block in one go so they can easily copy-paste it.# 🧠 MemoryOS — Autonomous Organizational Memory Safeguard
+# 🧠 MemoryOS — Autonomous Organizational Memory Safeguard
 
-MemoryOS is a premium, multi-agent AI system designed to capture, validate, and secure corporate knowledge from departing employees. Instead of losing critical tribal knowledge during handovers, organizations can conduct dynamic AI exit interviews, audit procedures against safety policies using Enkrypt AI, and index facts in a Qdrant Vector database for secure, citation-backed RAG QA.
+> **Capture. Validate. Preserve. Secure.**
+>
+> MemoryOS is an AI-native organizational memory platform that prevents critical knowledge loss when employees leave an organization. Using autonomous AI agents, security validation, and semantic retrieval, MemoryOS transforms fragmented tribal knowledge into secure, searchable, citation-backed documentation.
+>
+> Built for **Google AI Hackathon 2026**.
 
-Built for the Google AI Hackathon 2026.
+---
 
-✨ Key Features
-💬 Dynamic Agentic Exit Interviews: A role-aware AI interviewer (Gemini 1.5) that probes the departing employee for undocumented system configurations, credentials, and setup procedures.
-🛡️ Enkrypt AI Prompt Security Gateway: An active governance firewall that intercepts PII leaks, secret credentials, and malicious injection attacks before they reach external LLMs.
-⚠️ Compliance & Validation Audit Engine: A validation agent that scans knowledge for vulnerabilities (e.g. plaintext database passwords written on post-it notes) and flags security conflicts.
-📄 Notion-Style SOP Generator: Automatically compiles extracted knowledge units and reference documents into highly structured markdown operating procedures and runbooks.
-🔎 Qdrant Semantic RAG QA Console: A ChatGPT-style question-and-answer interface using Vertex AI embeddings and Qdrant DB, returning answers with clickable citation source badges.
-✨ Sleek Glassmorphic 3D Telemetry: A dark-mode first operations console featuring interactive coordinate particle grids (DotField) and neon GL-filament animations (WebThreads).
-🛠️ Architecture & Tech Stack
-Frontend: Next.js 16 (React, TypeScript, TailwindCSS, Framer Motion, HTML5 Canvas)
-Backend: Python 3.12 (FastAPI, Uvicorn, SQLAlchemy, LangGraph)
-AI Integration: Google GenAI SDK (gemini-1.5-flash and Vertex AI text-embedding-004)
-Database & Security: Qdrant Vector DB & Enkrypt AI Guardrails Gateway
-🚀 Quick Start Guide
-1. Backend Setup
+## 🌟 Overview
+
+Every employee carries invaluable operational knowledge—deployment procedures, undocumented configurations, troubleshooting techniques, and institutional expertise.
+
+Unfortunately, much of this disappears during employee transitions.
+
+**MemoryOS** solves this challenge through an intelligent multi-agent workflow that:
+
+- Conducts adaptive AI-powered exit interviews
+- Extracts undocumented operational knowledge
+- Detects security and compliance issues
+- Generates structured SOPs automatically
+- Stores knowledge inside a semantic vector database
+- Enables citation-backed enterprise Q&A
+
+The result is an organizational memory that never leaves with employees.
+
+---
+
+# ✨ Core Features
+
+## 💬 Dynamic Agentic Exit Interviews
+
+A role-aware AI interviewer powered by **Google Gemini** dynamically adapts its questions based on the employee's responses.
+
+Instead of static forms, the interview continuously identifies missing knowledge, uncovers undocumented workflows, and explores operational dependencies.
+
+---
+
+## 🛡️ Enkrypt AI Prompt Security Gateway
+
+Every prompt is routed through an active security gateway before reaching external LLMs.
+
+The gateway automatically detects and blocks:
+
+- API Keys
+- Database credentials
+- Personally Identifiable Information (PII)
+- Prompt Injection attacks
+- Sensitive organizational secrets
+
+This ensures confidential enterprise data never leaves trusted boundaries.
+
+---
+
+## ⚠️ Compliance & Validation Audit Engine
+
+Extracted knowledge is automatically reviewed by a validation agent.
+
+The engine identifies:
+
+- insecure configurations
+- plaintext credentials
+- policy violations
+- missing documentation
+- operational risks
+
+Potential issues are surfaced before knowledge becomes part of the organization's permanent memory.
+
+---
+
+## 📄 AI SOP & Runbook Generator
+
+MemoryOS converts validated interview data into beautifully structured documentation.
+
+Generated artifacts include:
+
+- Standard Operating Procedures (SOPs)
+- Technical Runbooks
+- Knowledge Base Articles
+- Operational Documentation
+
+All formatted in clean Markdown for easy publishing.
+
+---
+
+## 🔎 Semantic RAG Knowledge Assistant
+
+Validated organizational knowledge is indexed inside **Qdrant Vector Database** using **Vertex AI embeddings**.
+
+Employees can ask natural language questions through a ChatGPT-style interface and receive:
+
+- Citation-backed answers
+- Source document references
+- Semantic retrieval
+- High-context responses
+
+No hallucinated documentation.
+
+Only trusted organizational knowledge.
+
+---
+
+## ✨ Modern Glassmorphic Operations Console
+
+MemoryOS features a premium enterprise interface including:
+
+- 🌌 Animated DotField particle system
+- 🕸️ Interactive WebThreads visualization
+- 🌑 Dark-first glassmorphism
+- ⚡ Real-time AI workflow telemetry
+- 🎨 Smooth Framer Motion animations
+
+Designed to feel like a futuristic AI operating system.
+
+---
+
+# 🏗️ System Architecture
+
+```
+                 Employee
+                     │
+                     ▼
+         Agentic Exit Interview
+          (Google Gemini Agent)
+                     │
+                     ▼
+         Enkrypt Security Gateway
+                     │
+                     ▼
+        Compliance Validation Agent
+                     │
+                     ▼
+      Knowledge Extraction Pipeline
+                     │
+          ┌──────────┴──────────┐
+          ▼                     ▼
+   SOP Generator          Vector Embeddings
+                                │
+                                ▼
+                          Qdrant Database
+                                │
+                                ▼
+                   Citation-backed RAG Assistant
+```
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+
+- Next.js 16
+- React
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- HTML5 Canvas
+
+---
+
+## Backend
+
+- Python 3.12
+- FastAPI
+- Uvicorn
+- SQLAlchemy
+- LangGraph
+
+---
+
+## AI & Machine Learning
+
+- Google Gemini 1.5 Flash
+- Vertex AI `text-embedding-004`
+- Google GenAI SDK
+
+---
+
+## Database & Security
+
+- Qdrant Vector Database
+- Enkrypt AI Guardrails
+
+---
+
+# 🚀 Quick Start
+
+## 1️⃣ Clone the Repository
+
+```bash
+git clone <repository-url>
+cd MemoryOS
+```
+
+---
+
+## 2️⃣ Backend Setup
+
 Navigate to the backend directory:
-bash
 
-
+```bash
 cd backend
-Activate the virtual environment:
-powershell
+```
 
+Create and activate a virtual environment.
 
+### Windows
+
+```powershell
 .\.venv\Scripts\activate
+```
+
+### Linux / macOS
+
+```bash
+source .venv/bin/activate
+```
+
 Install dependencies:
-bash
 
-
+```bash
 pip install -r requirements.txt
-Configure your environment in .env:
-env
+```
 
+Create a `.env` file:
 
-GEMINI_API_KEY=your_key_here
+```env
+GEMINI_API_KEY=your_api_key_here
 GEMINI_MODEL=gemini-1.5-flash
-Start the FastAPI server:
-bash
+```
 
+Start the backend:
 
+```bash
 uvicorn app.main:app --reload --port 8000
-2. Frontend Setup
-Navigate to the frontend directory:
-bash
+```
 
+---
 
+## 3️⃣ Frontend Setup
+
+Navigate to the frontend:
+
+```bash
 cd frontend
-Install packages:
-bash
+```
 
+Install dependencies:
 
+```bash
 npm install
-Start the Next.js development server:
-bash
+```
 
+Run the development server:
 
+```bash
 npm run dev
-Open http://localhost:3001 in your browser.
-📂 Project Structure
-backend/app/main.py
-: Primary REST API endpoints.
-backend/app/agents/interview_agent.py
-: Conducts the dynamic, stage-gated exit interview chat turns.
-backend/app/prompts/interview_prompt.md
-: System prompt mapping known gaps and security policies.
-backend/app/services/rag.py
-: Manages Qdrant DB vector storage, dimension adaptors, and RAG retrieval.
-frontend/src/app/dashboard/page.tsx
-: The primary three-column operations dashboard.
-frontend/src/components/DotField.tsx
-: Bulging particle vector space matrix background.
+```
+
+Open:
+
+```
+http://localhost:3001
+```
+
+---
+
+# 📂 Project Structure
+
+```
+MemoryOS
+│
+├── backend
+│   ├── app
+│   │   ├── agents
+│   │   │   └── interview_agent.py
+│   │   │
+│   │   ├── prompts
+│   │   │   └── interview_prompt.md
+│   │   │
+│   │   ├── services
+│   │   │   └── rag.py
+│   │   │
+│   │   └── main.py
+│   │
+│   └── requirements.txt
+│
+├── frontend
+│   └── src
+│       ├── app
+│       │   └── dashboard
+│       │       └── page.tsx
+│       │
+│       └── components
+│           └── DotField.tsx
+│
+└── README.md
+```
+
+---
+
+# 📌 Key Components
+
+| Component | Purpose |
+|------------|----------|
+| `main.py` | FastAPI entry point and REST API endpoints |
+| `interview_agent.py` | Conducts dynamic AI exit interviews |
+| `interview_prompt.md` | Defines interview strategy and security prompts |
+| `rag.py` | Handles embeddings, vector storage, and semantic retrieval |
+| `dashboard/page.tsx` | Main operational dashboard |
+| `DotField.tsx` | Interactive particle-field visualization |
+
+---
+
+# 🎯 Why MemoryOS?
+
+Organizations lose millions each year because critical operational knowledge exists only in employees' minds.
+
+MemoryOS transforms that invisible knowledge into a secure, searchable, and continuously accessible organizational asset through autonomous AI agents, security validation, and semantic retrieval.
+
+Instead of replacing human expertise, MemoryOS ensures it is never lost.
+
+---
+
+# 🚀 Built With
+
+- ❤️ Google AI
+- ⚡ FastAPI
+- ▲ Next.js
+- 🧠 Gemini
+- 🔍 Qdrant
+- 🛡️ Enkrypt AI
+
+---
+
+## 📜 License
+
+This project was created for the **Google AI Hackathon 2026** and is intended for educational and demonstration purposes.
