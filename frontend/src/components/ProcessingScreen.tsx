@@ -60,8 +60,8 @@ export default function ProcessingScreen({
       if (active) setSteps(prev => ({ ...prev, validation: 'completed', documentation: 'active' }));
 
       try {
-        // 2. Perform the actual API call to the backend /process
-        const response = await fetch('http://localhost:8000/api/v1/process', {
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
+        const response = await fetch(`${baseUrl}/process`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ session_id: sessionId })

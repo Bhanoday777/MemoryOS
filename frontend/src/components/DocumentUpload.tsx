@@ -52,8 +52,8 @@ export default function DocumentUpload({ onUploadComplete, uploadedDocsList }: D
       setStage('parsing');
       const formData = new FormData();
       formData.append('file', file);
-      
-      const res = await fetch('http://localhost:8000/api/v1/documents/upload', {
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
+      const res = await fetch(`${baseUrl}/documents/upload`, {
         method: 'POST',
         body: formData,
       });

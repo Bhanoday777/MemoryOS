@@ -68,9 +68,9 @@ export default function AskMemoryOS({ onSelectTopic }: AskMemoryOSProps) {
         loading: true
       }
     ]);
-
     try {
-      const res = await fetch(`http://localhost:8000/api/v1/query?query=${encodeURIComponent(queryText)}`);
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
+      const res = await fetch(`${baseUrl}/query?query=${encodeURIComponent(queryText)}`);
       if (!res.ok) throw new Error('Search request failed.');
 
       const data = await res.json();

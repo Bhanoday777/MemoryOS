@@ -36,7 +36,7 @@ export default function DashboardHome() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   
   // Real-time backend configuration
-  const [backendUrl] = useState('http://localhost:8000/api/v1');
+  const [backendUrl] = useState(process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1');
 
   // Feature pills for the Hero OS section
   const featurePills = [
@@ -363,7 +363,7 @@ Understanding the deployment platform is crucial for managing and maintaining th
                 <label className="text-xs font-semibold text-zinc-400">FastAPI Router Endpoint</label>
                 <input 
                   type="text" 
-                  value="http://localhost:8000/api/v1"
+                  value={backendUrl}
                   disabled
                   className="w-full bg-[#09090B] border border-[#2A2A2F] rounded-lg px-4 py-2.5 text-xs text-zinc-400 focus:outline-none"
                 />

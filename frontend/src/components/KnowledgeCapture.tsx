@@ -69,7 +69,8 @@ export default function KnowledgeCapture({
 
     setIsStarting(true);
     try {
-      const res = await fetch('http://localhost:8000/api/v1/interview/start', {
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
+      const res = await fetch(`${baseUrl}/interview/start`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ employee_name: empName, employee_role: empRole }),
@@ -97,7 +98,8 @@ export default function KnowledgeCapture({
     setIsSending(true);
 
     try {
-      const res = await fetch('http://localhost:8000/api/v1/interview/message', {
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
+      const res = await fetch(`${baseUrl}/interview/message`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ session_id: sessionId, message: userText }),
