@@ -14,7 +14,9 @@ class RAGService:
 
     def __init__(self):
         try:
+            import os
             self.persist_dir = settings.QDRANT_PERSIST_DIR
+            os.makedirs(self.persist_dir, exist_ok=True)
             logger.info(f"Initializing Qdrant Client at: {self.persist_dir}")
             
             # Setup persistent client
