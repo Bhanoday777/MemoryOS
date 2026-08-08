@@ -10,6 +10,13 @@ class Settings(BaseSettings):
     API_PREFIX: str = "/api/v1"
     API_PORT: int = 8000
     API_DEBUG: bool = True
+    ALLOWED_ORIGINS: list[str] = [
+        "http://localhost:3000",
+        "http://localhost:3001",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:3001",
+        "*"  # Development fallback; restrict in strict production setups
+    ]
 
     # Database
     DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/memoryos"

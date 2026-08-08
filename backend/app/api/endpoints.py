@@ -1,5 +1,6 @@
 import uuid
 import logging
+import httpx
 from typing import Optional, List
 from fastapi import APIRouter, Depends, UploadFile, File, Form, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -298,6 +299,14 @@ async def start_interview(
             message=welcome_msg,
             current_stage="interview"
         )
+    except HTTPException:
+        raise
+    except ValueError as ve:
+        logger.warning(f"Validation error on interview start: {str(ve)}")
+        raise HTTPException(status_code=422, detail=str(ve))
+    except (httpx.ConnectError, httpx.TimeoutException) as he:
+        logger.error(f"Upstream service connection failure on interview start: {str(he)}")
+        raise HTTPException(status_code=503, detail="Upstream AI provider temporarily unreachable.")
     except Exception as e:
         logger.error(f"Failed to start exit interview session: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Database session creation failed: {str(e)}")
@@ -408,6 +417,14 @@ async def post_interview_message(
             current_stage="extraction" if is_finished else "interview",
             is_finished=is_finished
         )
+    except HTTPException:
+        raise
+    except ValueError as ve:
+        logger.warning(f"Validation error on interview message: {str(ve)}")
+        raise HTTPException(status_code=422, detail=str(ve))
+    except (httpx.ConnectError, httpx.TimeoutException) as he:
+        logger.error(f"Upstream service connection failure on interview message: {str(he)}")
+        raise HTTPException(status_code=503, detail="Upstream AI provider temporarily unreachable.")
     except Exception as e:
         logger.error(f"Failed to post interview message: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Failed to process interview message: {str(e)}")
@@ -468,9 +485,17 @@ async def process_session_data(
             validation_status=overall_status,
             generated_documents=graph_output.get("generated_documents", [])
         )
+    except HTTPException:
+        raise
+    except ValueError as ve:
+        logger.warning(f"Validation error during processing: {str(ve)}")
+        raise HTTPException(status_code=422, detail=str(ve))
+    except (httpx.ConnectError, httpx.TimeoutException) as he:
+        logger.error(f"Upstream AI provider connection failure during processing: {str(he)}")
+        raise HTTPException(status_code=503, detail="Upstream AI provider temporarily unreachable during extraction.")
     except Exception as e:
-        logger.error(f"Processing session data failed: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"LangGraph execution pipeline crashed: {str(e)}")
+        logger.error(f"Process session data execution error: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Internal processing failure: {str(e)}")
 
 
 # ==========================================
@@ -530,6 +555,14 @@ async def query_knowledge_base(
             related_topics=[],
             used_sources=[]
         )
+    except HTTPException:
+        raise
+    except ValueError as ve:
+        logger.warning(f"Validation error on QA query: {str(ve)}")
+        raise HTTPException(status_code=422, detail=str(ve))
+    except (httpx.ConnectError, httpx.TimeoutException) as he:
+        logger.error(f"Upstream AI provider connection failure during QA query: {str(he)}")
+        raise HTTPException(status_code=503, detail="Upstream AI provider temporarily unreachable during search.")
     except Exception as e:
         logger.error(f"RAG query search failed: {str(e)}")
         raise HTTPException(status_code=500, detail=f"QA search failed: {str(e)}")

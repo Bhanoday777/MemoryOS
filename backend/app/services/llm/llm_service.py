@@ -140,9 +140,11 @@ async def check_enkrypt_guardrails(text: str) -> tuple[bool, Optional[str]]:
         "bypass limits", 
         "reveal system", 
         "reveal developer", 
-        "you are now a",
+        "you are now",
         "act as a",
-        "override system"
+        "override system",
+        "system override",
+        "dan mode"
     ]
     for kw in injection_keywords:
         if kw in cleaned:
