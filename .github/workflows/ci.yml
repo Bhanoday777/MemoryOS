@@ -30,8 +30,10 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Automated Pytest Suite
+        env:
+          PYTHONPATH: .
         run: |
-          pytest tests/ -v
+          python -m pytest tests/ -v
 
   frontend-ci:
     name: Frontend Build & Type Check
