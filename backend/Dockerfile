@@ -24,13 +24,8 @@ ENV PATH=/root/.local/bin:$PATH
 # Copy backend source code
 COPY . .
 
-# Expose default API port
-EXPOSE 8000
-
-# Set environment defaults for Cloud Run
-ENV PORT=8000
-ENV API_PORT=8000
-ENV LOG_LEVEL=INFO
+# Expose Cloud Run default port
+EXPOSE 8080
 
 # Launch API server mapping to Cloud Run's dynamic PORT environment variable
-CMD uvicorn app.main:app --host 0.0.0.0 --port $PORT
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8080}"]

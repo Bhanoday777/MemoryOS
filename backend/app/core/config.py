@@ -18,8 +18,8 @@ class Settings(BaseSettings):
         "*"  # Development fallback; restrict in strict production setups
     ]
 
-    # Database
-    DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/memoryos"
+    # Database (Defaults to SQLite for self-contained deployment if no PostgreSQL is configured)
+    DATABASE_URL: str = "sqlite+aiosqlite:///./memoryos.db"
 
     # Groq API Configuration (Fallback)
     GROQ_API_KEY: Optional[str] = None
